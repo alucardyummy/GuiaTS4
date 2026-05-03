@@ -47,7 +47,9 @@ body::before {
 }
 
 .logo-main {
-    max-width: 280px;
+    width: 90%;
+    max-width: 500px;
+    height: auto;
     filter: drop-shadow(0 0 20px rgba(62, 198, 184, 0.5));
     margin-bottom: 30px;
     animation: flutuar 3s ease-in-out infinite;
