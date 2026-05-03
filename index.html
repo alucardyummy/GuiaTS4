@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sims 4 Android BR | Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css">
 </head>
 <body>
     <div id="custom-cursor"></div>
@@ -27,9 +27,11 @@
     <script>
         const cursor = document.getElementById('custom-cursor');
         document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            cursor.style.opacity = '1';
+            if(cursor) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursor.style.opacity = '1';
+            }
         });
     </script>
 </body>
