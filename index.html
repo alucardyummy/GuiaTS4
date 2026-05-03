@@ -66,6 +66,19 @@
                 window.location.href = href;
             }, 800);
         });
+
+        window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+        document.body.classList.remove('blur-out');
+        document.body.classList.add('blur-in');
+        
+        const loader = document.getElementById('loader-overlay');
+        if (loader) {
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+        }
+    }
+});
     </script>
 </body>
 </html>
