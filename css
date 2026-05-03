@@ -47,13 +47,15 @@ body::before {
 }
 
 .logo-main {
-    width: 90%;
-    max-width: 500px;
+    width: 689px;
+    max-width: 400px;
     height: auto;
-    filter: drop-shadow(0 0 20px rgba(62, 198, 184, 0.5));
-    margin-bottom: 30px;
+    display: block;
+    margin: 0 auto 30px auto;
+    filter: drop-shadow(0 0 15px rgba(62, 198, 184, 0.5));
     animation: flutuar 3s ease-in-out infinite;
 }
+
 
 .status-box {
     margin-bottom: 40px;
