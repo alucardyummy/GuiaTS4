@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sims 4 Android BR | Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="custom-cursor"></div>
+
+    <main class="intro-container efeito-entrada">
+        <div class="logo-wrapper">
+            <img src="img/logo.png" alt="Logo" class="logo-main">
+        </div>
+        
+        <div class="status-box">
+            <p class="typing">Acessando banco de dados...</p>
+        </div>
+
+        <a href="https://alucardyummy.github.io/Sims4AndroidBR/" class="btn-start">
+            <span class="btn-text">INICIAR GUIA</span>
+            <div class="btn-glow"></div>
+        </a>
+    </main>
+
+    <script>
+        // Reutilizando seu cursor personalizado
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
