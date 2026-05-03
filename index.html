@@ -24,14 +24,15 @@
         </a>
     </main>
 
-    <script>
-        // Reutilizando seu cursor personalizado
-        const cursor = document.getElementById('custom-cursor');
+        <script>
+        const cursor = document.getElementById('custom-cursor'); 
         document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            cursor.style.opacity = '1';
+            if(cursor) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursor.style.opacity = '1';
+            }
         });
-    </script>
+        </script>
 </body>
 </html>
