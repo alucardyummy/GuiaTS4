@@ -6,32 +6,65 @@
     <title>Sims 4 Android BR | Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="blur-in">
     <div id="custom-cursor"></div>
 
-    <main class="intro-container efeito-entrada">
+    <main class="intro-container efeito-entrada" id="main-content">
         <div class="logo-wrapper">
             <img src="img/logo.png" alt="Logo" class="logo-main">
         </div>
         
         <div class="status-box">
-            <p class="typing">Acessando banco de dados...</p>
+            <p class="typing">Clique abaixo para saber como emular o The Sims 4!</p>
         </div>
 
-        <a href="https://alucardyummy.github.io/Sims4AndroidBR/" class="btn-start">
+        <a href="https://alucardyummy.github.io/Sims4AndroidBR/" class="btn-start" id="link-redirecionar">
             <span class="btn-text">INICIAR GUIA</span>
-            <div class="btn-glow"></div>
+            <div class="card-glow"></div>
         </a>
     </main>
 
     <script>
         const cursor = document.getElementById('custom-cursor');
-        document.addEventListener('mousemove', (e) => {
-            if(cursor) {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-                cursor.style.opacity = '1';
+        const link = document.getElementById('link-redirecionar');
+        const body = document.body;
+        
+        function criarPoeira(x, y) {
+            for (let i = 0; i < 8; i++) {
+                const p = document.createElement('div');
+                p.className = 'poeira-cosmica';
+                p.style.left = x + 'px'; p.style.top = y + 'px';
+                const ax = (Math.random() - 0.5) * 100;
+                const ay = (Math.random() - 0.5) * 100;
+                p.style.setProperty('--x', ax + 'px');
+                p.style.setProperty('--y', ay + 'px');
+                document.body.appendChild(p);
+                setTimeout(() => p.remove(), 600);
             }
+        }
+
+        window.addEventListener('mousedown', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursor.classList.remove('expandir-cursor');
+            void cursor.offsetWidth;
+            cursor.classList.add('expandir-cursor');
+            criarPoeira(e.clientX, e.clientY);
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = link.href;
+            body.classList.remove('blur-in');
+            body.classList.add('blur-out');
+            setTimeout(() => {
+                window.location.href = href;
+            }, 800);
         });
     </script>
 </body>
