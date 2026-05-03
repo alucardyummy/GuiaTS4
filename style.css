@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     box-sizing: border-box;
     font-family: 'Space Grotesk', sans-serif;
     cursor: none;
@@ -15,93 +14,115 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    transition: filter 0.8s ease, opacity 0.8s ease;
 }
 
 body::before {
     content: "";
     position: fixed;
-    top: 0; 
-    left: 0;
-    width: 100vw; 
-    height: 100vh;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
     background: url('img/fundinho.png') no-repeat center center;
     background-size: cover;
     z-index: -1;
     opacity: 0.6;
 }
 
+.blur-in { animation: blurIn 1s forwards; }
+.blur-out { animation: blurOut 0.8s forwards; }
+
+@keyframes blurIn {
+    0% { filter: blur(20px); opacity: 0; }
+    100% { filter: blur(0); opacity: 1; }
+}
+
+@keyframes blurOut {
+    0% { filter: blur(0); opacity: 1; }
+    100% { filter: blur(20px); opacity: 0; }
+}
+
 #custom-cursor {
     position: fixed;
-    width: 30px;
-    height: 30px;
+    width: 50px; height: 50px;
     border: 2px solid #3ec6b8;
     border-radius: 50%;
     pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 15px rgba(62, 198, 184, 0.8);
-    transition: transform 0.1s ease;
+    z-index: 99999;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+    box-shadow: 0 0 15px rgba(62, 198, 184, 0.8), inset 0 0 10px rgba(62, 198, 184, 0.4);
+}
+
+.expandir-cursor { animation: expandirSuave 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+
+@keyframes expandirSuave {
+    0% { transform: translate(-50%, -50%) scale(0.1); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+}
+
+.poeira-cosmica {
+    position: fixed;
+    background-color: #3ec6b8;
+    border-radius: 50%;
+    width: 2px; height: 2px;
+    pointer-events: none;
+    z-index: 99998;
+    animation: brilharSuave 0.6s forwards;
+}
+
+@keyframes brilharSuave {
+    0% { transform: translate(0, 0) scale(0); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(1.5); opacity: 0; }
 }
 
 .intro-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
-    z-index: 10;
+    display: flex; flex-direction: column;
+    align-items: center; width: 100%; z-index: 10;
 }
 
 .logo-main {
-    width: 85%;
-    max-width: 500px;
-    height: auto;
+    width: 85%; max-width: 400px;
     filter: drop-shadow(0 0 20px rgba(62, 198, 184, 0.5));
     margin-bottom: 30px;
     animation: flutuar 3s ease-in-out infinite;
 }
 
 .status-box {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     color: #3ec6b8;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    opacity: 0.8;
+    background: rgba(62, 198, 184, 0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(62, 198, 184, 0.2);
 }
 
 .btn-start {
     position: relative;
-    display: inline-block;
-    padding: 18px 45px;
+    padding: 20px 40px;
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    letter-spacing: 3px;
-    border: 1px solid rgba(62, 198, 184, 0.5);
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
+    letter-spacing: 2px;
+    border-radius: 35px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    overflow: hidden;
     transition: 0.3s;
-    border-radius: 4px;
 }
 
 .btn-start:hover {
-    border-color: #3ec6b8;
-    box-shadow: 0 0 30px rgba(62, 198, 184, 0.4);
     transform: scale(1.05);
+    border-color: #3ec6b8;
+    box-shadow: inset 0 0 20px rgba(62, 198, 184, 0.3);
 }
 
 @keyframes flutuar {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
-}
-
-.efeito-entrada {
-    animation: entradaSimples 1s ease-out forwards;
-}
-
-@keyframes entradaSimples {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
 }
